@@ -1,0 +1,55 @@
+@mixin box($size, $background-color) {
+    width: $size;
+    height: $size/2;
+    background-color: $background-color;
+    @content;
+}
+
+.box {
+    @include box(200px, #bada55)
+}
+
+$colors: (1: #aaa, 2: #bbb, 3: #ccc, 4: #ddd);
+
+ @each $key, $value in $colors {
+    .container-#{$key} {
+        background-color: $value;
+    }
+}
+
+
+%generalBorder {
+        border: 1px solid #000;
+        border-radius: 10px;    
+    }
+
+.container {
+    @extend %generalBorder; 
+    width: 1280px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.wrapper {
+    @extend %generalBorder; 
+    float: left;
+    position: relative;
+    
+}
+
+.item {
+    @extend %generalBorder; 
+    font-size: 14px;
+    font-family: "Sans Pro", sans-serif;
+    font-weight: 700;
+    
+}
+
+.listRight {
+    .container-challenge-4 & {
+        a { &:hover 
+        { color:red;
+    }
+}
+}
+}
